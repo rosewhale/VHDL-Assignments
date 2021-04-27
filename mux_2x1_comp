@@ -1,0 +1,71 @@
+library ieee;
+	use ieee.std_logic_1164.all;
+	use ieee.std_logic_arith.all;
+	use ieee.std_logic_unsigned.all;
+	
+entity mux_2x1_comp is
+	port(
+		A	 : in std_logic;
+		B	 : in std_logic;
+		Sel : in std_logic;
+		Y	 : out std_logic
+	);
+end mux_2x1_comp;
+
+architecture STR of mux_2x1_comp is
+
+		component and_2 is
+			port( 
+				A, B : in std_logic;
+				Y	  : out std_logic
+			);
+		end component;
+		
+		component or_2 is
+			port( 
+				A, B : in std_logic;
+				Y	  : out std_logic
+			);
+		end component;
+		
+		component not_gate is
+			port(
+				A	: in std_logic;
+				Y	: out std_logic
+			);
+		end component;
+		
+		signal NotS		 : std_logic;
+		signal AandNotS : std_logic;
+		signal Bands	 : std_logic;
+			
+begin
+
+	U1	: and_2
+	port map(
+		A => A,
+		B => NotS,
+		Y => AandNotS
+	);
+	
+	U2 : and_2
+	port map(
+		A => B,
+		B => SEL,
+		Y => Bands
+	);
+
+	U3 : not_gate
+	port map(
+		A => SEL,
+		Y => NotS
+	);
+	
+	U4 : or_2
+	port map(
+		A => AandNotS,
+		B => Bands,
+		Y => Y
+	);
+
+	end STR;
