@@ -4,8 +4,8 @@ library ieee;
 	  use ieee.std_logic_unsigned.all;
 
 entity RAM is
-generic (bits: INTEGER := 8;
-         words: INTEGER := 16);
+generic (bits: INTEGER := 8;                  -- number of bits per word
+         words: INTEGER := 16);               -- number of words in the memory
    port (wr_ena, clk: in std_logic;
          addr: in integer range 0 to words-1;
          data_in: in std_logic_vector (bits-1 downto 0);
