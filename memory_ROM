@@ -1,0 +1,28 @@
+  
+library ieee;
+	  use ieee.std_logic_1164.all;
+	  use ieee.std_logic_arith.all;
+	  use ieee.std_logic_unsigned.all;
+
+entity ROM is
+generic (bits: INTEGER := 8;                  -- number of bits per word
+         words: INTEGER := 16);               -- number of words in the memory
+   port (addr: in integer range 0 to words-1;
+         data: out std_logic_vector (bits-1 downto 0));         
+ end ROM;
+ 
+ architecture ROM of ROM is
+    type vector_arry is arry (0 to words-1) of
+         std_logic_vetor (bits-1 downto 0);
+    signal memory: vector_array := ("00000000",
+                                    "00000010",
+                                    "00000100",
+                                    "00001000",
+                                    "00010000",
+                                    "00100000",
+                                    "01000000",
+                                    "10000000");
+                                    
+begin
+    data <= memory(addr);    
+end ROM;
