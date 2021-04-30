@@ -1,22 +1,23 @@
+  
 library ieee;
-	use ieee.std_logic_1164.all;
-	use ieee.std_logic_arith.all;
-	use ieee.std_logic_unsigned.all;
+  	 use ieee.std_logic_1164.all;
+	 use ieee.std_logic_arith.all;
+	 use ieee.std_logic_unsigned.all;
 
-entity shift is
+entity variable_shift is
 	port(
 		clk	 : in std_logic;
 		din	 : in std_logic;
 		dout	 : out std_logic
 	);
-end shift;
+end variable_shift;
 
-architecture BEH of shift is
-   variable a,b,c : std_logic;
+architecture BEH of variable_shift is
 begin
-    process(clk)
-    begin
-      if rising_edge(clk) then
+   process(clk)
+       variable a,b,c : std_logic;
+   begin
+     if rising_edge(clk) then
          a := din;
          b := a;
          c := b;
