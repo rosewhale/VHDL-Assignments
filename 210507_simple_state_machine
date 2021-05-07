@@ -29,7 +29,7 @@ begin
           case state is
              when IDLE =>
                 if(sw_a = '1') then
-                   state <= STATE_B;
+                   state <= STATE_A;
                 elsif(sw_b = '1') then
                    state <= STATE_B;
                 else
