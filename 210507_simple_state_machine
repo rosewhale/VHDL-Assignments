@@ -17,7 +17,7 @@ end simple_state_machine;
 architecture state_machine of simple_state_machine is
    type state_type is (IDLE, STATE_A, STATE_B);
    signal state : state_type;
-   signal cnt   : out std_logic_vector(3 downto 0);
+   signal cnt   : std_logic_vector(3 downto 0);
    
 begin
     process(nRst, clk)
