@@ -15,7 +15,7 @@ entity adc_control is
 end adc_control;
 
 architecture BEH of adc_control is
-   type state_type is (IDLE, START, WAIT_CONV, DATTA_READ);
+   type state_type is (IDLE, START, WAIT_CONV, DATA_READ);
    signal state : state_type;
    
 begin
