@@ -1,0 +1,18 @@
+library ieee;
+	use ieee.std_logic_1164.all;
+	use ieee.std_logic_arith.all;
+	use ieee.std_logic_unsigned.all;
+
+entity IR_decoder is
+   port(
+      nRst  : in std_logic;
+      clk   : in std_logic;
+      data_bus    : in std_logic_vector(7 downto 0);
+      SELA   : out std_logic_vector(1 downto 0);
+      SELB   : out std_logic_vector(1 downto 0);
+      SELD   : out std_logic_vector(1 downto 0);
+      ALU_OP   : out std_logic_vector(1 downto 0);
+      BUS_SEL : out std_logic
+   );
+      
+end IR_decoder;    
