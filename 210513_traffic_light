@@ -3,7 +3,7 @@ library ieee;
 	use ieee.std_logic_arith.all;
 	use ieee.std_logic_unsigned.all;
 
-entity traffic_light is
+entity crosswalk_control is
    port(
       nRst  : in std_logic;
       clk   : in std_logic;
@@ -14,12 +14,12 @@ entity traffic_light is
       car_yel : out std_logic;
       car_grn : out std_logic;
       
-      count : out std_logic_vector(3 downto 0);
+      count   : out std_logic_vector(3 downto 0);
       odd_sig : out std_logic_vector(2 downto 0)
    );
- end traffic_light;
+ end crosswalk_control;
  
- architecture BEH of traffic_light is
+ architecture BEH of crosswalk_control is
     type state_type is (MAN_GO, MAN_STOP, CAR_GO, CAR_STOP);
     signal state : state_type;
     signal cnt  : std_logic_vector(4 downto 0);
@@ -38,7 +38,7 @@ begin
           case state is
             when MAN_GO =>
             if(cnt = 30)  then
-               state <= MAN_STOP;
+               state <= MAN_GO;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
@@ -80,7 +80,7 @@ begin
             
             when CAR_GO =>
             if(cnt = 60) then
-               state <= MAN_STOP;
+               state <= CAR_GO;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
@@ -94,7 +94,7 @@ begin
             
             when CAR_STOP =>
             if(cnt = 5) then
-               state <= MAN_STOP;
+               state <= CAR_STOP;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
@@ -106,7 +106,7 @@ begin
             end if;
             
             when others =>
-            state < MAN_GO;
+            state <= MAN_GO;
          
          end case;
          
@@ -123,8 +123,8 @@ begin
       end if;
    end process;
    
-odd sig <= "000" wheb state2 = even_clk else
-           "001" wheb state2 = odd_clk else
+odd_sig <= "000" when state2 = even_clk else
+           "001" when state2 = odd_clk else
            "000";
         
 end BEH;
