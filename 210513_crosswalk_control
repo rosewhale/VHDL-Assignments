@@ -38,7 +38,7 @@ begin
           case state is
             when MAN_GO =>
             if(cnt = 30)  then
-               state <= MAN_GO;
+               state <= MAN_STOP;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
@@ -51,7 +51,7 @@ begin
             
             when  MAN_STOP =>
             if(cnt = 10)  then
-               state <= MAN_STOP;
+               state <= CAR_GO;
                cnt <= (others => '0');
                
                   if(state2 = even_clk) then
@@ -80,7 +80,7 @@ begin
             
             when CAR_GO =>
             if(cnt = 60) then
-               state <= CAR_GO;
+               state <= CAR_STOP;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
@@ -94,7 +94,7 @@ begin
             
             when CAR_STOP =>
             if(cnt = 5) then
-               state <= CAR_STOP;
+               state <= MAN_GO;
                cnt <= (others => '0');
             else
                cnt <= cnt + 1;
