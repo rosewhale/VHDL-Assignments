@@ -13,7 +13,7 @@ entity program_counter is
 end program_counter;
 
 architecture BEH of program_counter is
-    sognal address : std_logic_vector(15 downto 0);
+    signal address : std_logic_vector(15 downto 0);
     
 begin
    process(nRst, clk)
