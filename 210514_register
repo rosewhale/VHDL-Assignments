@@ -1,0 +1,29 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    use ieee.std_logic_arith.all;
+	  use ieee.std_logic_unsigned.all;
+
+entity register is
+   port(
+      clk   : in std_logic;      
+      load  : in std_logic;
+      data_in : in std_logic_vector(7 downto 0);
+      q    : out std_logic_vector(7 downto 0)
+   );
+end register;
+
+architecture BEH of register is
+    signal sq : std_logic_vector(7 downto 0);
+    
+begin
+    process(load, clk)
+    begin
+        if falling_edge(clk) then
+            if (load = '1') then
+                sq <= data_in;
+            end if;
+        end if;
+     end process;
+     q <= sq;
+     
+end BEH;
