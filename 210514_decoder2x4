@@ -9,8 +9,8 @@ entity decoder2x4 is
       A   : out std_logic;
       B   : out std_logic;
       C   : out std_logic;
-      D   : out std_logic;
-    ;
+      D   : out std_logic
+    );
 end decoder2x4
 
 architecture BEH of decoder2x4 is
